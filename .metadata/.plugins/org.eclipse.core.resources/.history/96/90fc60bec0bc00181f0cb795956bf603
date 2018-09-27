@@ -1,0 +1,76 @@
+package com.qa.DemoSite;
+
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Before;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.PageFactory;
+
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
+
+import cucumber.api.PendingException;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+
+public class RunningTests {
+	
+WebDriver driver = null;
+public static ExtentReports reports = new ExtentReports("C:/Users/Admin/Desktop/Empty/RunnerTest.html", true);;
+public static ExtentTest test = reports.startTest("My Details");;
+private String my_username;
+private String my_password;
+
+
+	
+	@Given("^my username and password$")
+	public void my_username_and_password() throws Throwable {
+		System.setProperty("webdriver.chrome.driver", "C:/Users/Admin/Documents/chromedriver.exe");
+		driver = new ChromeDriver();
+	    my_username = "dwadwa";
+	    my_password = "dwadwa";
+	}
+
+	@When("^my username and password is entered$")
+	public void my_username_and_password_is_entered() throws Throwable {
+		
+	    driver.get(Constant.URL);
+		AddUser newUser = PageFactory.initElements(driver, AddUser.class);
+		test.log(LogStatus.INFO, "Loaded WebPage");
+		newUser.createUser(my_username, my_password);
+		Thread.sleep(1000);
+	}
+
+	
+	@Then("^I am signed in$")
+	public void i_am_signed_in() throws Throwable {
+		test.log(LogStatus.INFO, "Signed Up!");
+	}
+
+	
+	@Given("^my username and password I used to signUp$")
+	public void my_username_and_password_I_used_to_signUp() throws Throwable {
+		Login loginUser = PageFactory.initElements(driver, Login.class);
+		loginUser.doLogin(my_username, my_password);
+		test.log(LogStatus.INFO, "Logging In!");
+	}
+
+	@Then("^I am logged in$")
+	public void i_am_logged_in() throws Throwable {
+		WebElement checkElement = driver.findElement(By.xpath("/html/body/table/tbody/tr/td[1]/big/blockquote/blockquote/font/center/b"));
+		if(checkElement.getText().equals("**Successful Login**")) {
+			test.log(LogStatus.PASS, "We logged in!");
+		}
+		else {
+			test.log(LogStatus.FAIL, "Didn't log in!");
+		}
+	}
+
+
+}

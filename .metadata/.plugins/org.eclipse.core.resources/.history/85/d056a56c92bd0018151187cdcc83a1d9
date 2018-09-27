@@ -1,0 +1,198 @@
+package com.qa.MavenProject;
+
+
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.PageFactory;
+
+import com.qa.DemoSite.AddUser;
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
+
+import cucumber.api.PendingException;
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+
+public class TestPage {
+
+	WebDriver driver = null;
+	public static ExtentReports reports;
+	public static ExtentTest test;
+	private WebElement checkUserCreated;
+	private CreateUser makeUser;
+	private ManageJenkins manageJenkins;
+	
+	private WebElement goToCreateUser;
+	
+	private String inputFullName = "Mike Man";
+	private String inputUserName = "Mikey";
+	private String inputPassword = "Mike";
+	private String inputConfirmPass = "Mike";
+	private int counter;
+
+
+	@Before
+	public void setUp() {
+		System.setProperty("webdriver.chrome.driver", "C:/Users/Admin/Documents/chromedriver.exe");
+		driver = new ChromeDriver();
+		reports = new ExtentReports("C:\\Users\\Admin\\Documents\\StoreTests\\JenkinsWebTest.html", true);
+		test = reports.startTest("My Details");
+	}	
+	
+	
+	@Given("^that you are on the create UserScreen$")
+	public void that_you_are_on_the_create_UserScreen() throws InterruptedException {
+	   driver.get(Constant.jenkinsURL);
+	   Login login = PageFactory.initElements(driver, Login.class);
+	   login.Login();
+	   MainPage main = PageFactory.initElements(driver, MainPage.class);
+	   main.goToManageJenkins();
+	   manageJenkins = PageFactory.initElements(driver, ManageJenkins.class);
+	   manageJenkins.goToManageUsers();
+	   UsersPage userPage = PageFactory.initElements(driver, UsersPage.class);
+	   userPage.goToCreateUsers();
+
+	   System.out.println(driver.getTitle());
+	   if(driver.getTitle().equals("Create User [Jenkins]"))
+	   {
+		   System.out.println("It's create User");
+	   }
+	   else
+	   {
+		   System.out.println("It isnt create User");
+	   }
+	   
+	   
+	   
+	}
+
+	@When("^the User details are entered on the Create UserScreen$")
+	public void the_User_details_are_entered_on_the_Create_UserScreen() throws Throwable {
+		makeUser = PageFactory.initElements(driver, CreateUser.class);
+		makeUser.createUser(inputUserName, inputPassword, inputConfirmPass, inputFullName);
+		System.out.println("Entering Details The User");
+	}
+
+	
+	@When("^the details are submitted on the Create UserScreen$")
+	public void the_details_are_submitted_on_the_Create_UserScreen() throws Throwable {
+	   makeUser.submitUser();
+	   System.out.println("Details Have been sumbitted");
+	}
+
+	@Then("^the Username should be visible on the UsersScreen$")
+	public void the_Username_should_be_visible_on_the_UsersScreen() throws Throwable {
+	    checkUserCreated = driver.findElement(By.xpath("//*[@id=\"people\"]/tbody/tr[3]/td[2]/a"));
+	    OnUserInfo userinfo = PageFactory.initElements(driver, OnUserInfo.class);
+	    System.out.println(checkUserCreated.getText());
+	    if(checkUserCreated.getText().equals(inputUserName)) 
+	    {
+	    	System.out.println("User is Visible");
+	    }
+	    else
+	    {
+	    	System.out.println("User isn't visible");
+	    }
+	    userinfo.goToPeoplePage();
+		manageJenkins = PageFactory.initElements(driver, ManageJenkins.class);
+		manageJenkins.goToManageUsers();
+		UsersPage userPage = PageFactory.initElements(driver, UsersPage.class);
+		userPage.goToCreateUsers();
+	    
+	}
+
+	
+	@When("^the User details \"([^\"]*)\" username, \"([^\"]*)\" password, \"([^\"]*)\" confirm Password, \"([^\"]*)\" Fullname and \"([^\"]*)\" EmailAddress are entered on the Create UserScreen$")
+	public void the_User_details_username_password_confirm_Password_Fullname_and_EmailAddress_are_entered_on_the_Create_UserScreen(String arg1, String arg2, String arg3, String arg4, String arg5) throws Throwable {
+		makeUser = PageFactory.initElements(driver, CreateUser.class);
+		makeUser.createUser(arg1, arg2, arg3, arg4);
+
+		System.out.println("Entering Details The User");
+		
+		
+	}
+	
+
+	@When("^the detail are submitted to the Create UserScreen$")
+	public void the_detail_are_submitted_to_the_Create_UserScreen() throws Throwable {
+		makeUser.submitUser();
+		System.out.println("Submitted");
+	}
+
+	@Then("^the \"([^\"]*)\" username should be visible on the UsersScreen$")
+	public void the_username_should_be_visible_on_the_UsersScreen(String arg1) throws Throwable {
+		
+		for (int i = 2; i < 10; i++) {
+	    checkUserCreated = driver.findElement(By.xpath("//*[@id=\"people\"]/tbody/tr[" + i + "]/td[2]/a"));
+	    if(checkUserCreated.getText().equals(arg1)) 
+	    {	
+	    	System.out.println(arg1 +  " is Visible");
+	    }
+	    else
+	    {
+	    }
+		}
+	    
+		}
+	
+
+	@Given("^the \"([^\"]*)\" username is visible on the UsersScreen$")
+	public void the_username_is_visible_on_the_UsersScreen(String arg1) throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new PendingException();
+	}
+
+	@When("^the \"([^\"]*)\" username is clicked on the UserScreen$")
+	public void the_username_is_clicked_on_the_UserScreen(String arg1) throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new PendingException();
+	}
+
+	@Then("^the User Profile should display the \"([^\"]*)\" username on the ProfileScreen$")
+	public void the_User_Profile_should_display_the_username_on_the_ProfileScreen(String arg1) throws Throwable {
+	}
+
+	@Given("^the \"([^\"]*)\" Username's profile page has been loaded$")
+	public void the_Username_s_profile_page_has_been_loaded(String arg1) throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new PendingException();
+	}
+
+	@Given("^the configure button has been clicked on the profile page$")
+	public void the_configure_button_has_been_clicked_on_the_profile_page() throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new PendingException();
+	}
+
+	@When("^I change the old email address on the Configure Page to a new email address \"([^\"]*)\"$")
+	public void i_change_the_old_email_address_on_the_Configure_Page_to_a_new_email_address(String arg1) throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new PendingException();
+	}
+
+	@When("^I save the changes to the Configure Page$")
+	public void i_save_the_changes_to_the_Configure_Page() throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new PendingException();
+	}
+
+	@Then("^the Configure Page should show the new email address \"([^\"]*)\"$")
+	public void the_Configure_Page_should_show_the_new_email_address(String arg1) throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new PendingException();
+	}
+	
+	@After
+	public void endSetup() {
+		driver.close();
+	}
+}

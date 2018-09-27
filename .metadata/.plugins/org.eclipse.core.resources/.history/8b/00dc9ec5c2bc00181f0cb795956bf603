@@ -1,0 +1,14 @@
+Feature: Using the DemoSite
+	As a User I want to be able to 
+	I want to be able signUp and LogIn
+	So that I can use the website
+	
+Scenario: Signing Up
+	Given my username and password
+	When my username and password is entered
+	Then I am signed in
+	
+Scenario: Logging In
+	Given my username and password I used to signUp
+	When tetet
+	Then I am logged in

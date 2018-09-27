@@ -1,0 +1,66 @@
+import static io.restassured.RestAssured.given;
+
+import java.util.HashMap;
+
+import org.junit.Test;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+
+import io.restassured.http.ContentType;
+import io.restassured.response.Response;
+import io.restassured.response.ValidatableResponse;
+import io.restassured.specification.RequestSpecification;
+
+public class TestURL {
+	private Response response;
+	private ValidatableResponse json;
+	private RequestSpecification request;
+	private String theURL = "http://localhost:8090/example/v1/hotels?page=0&size=100";
+	
+	@Test
+	public void puttingInJSONArray()
+	{
+		JSONObject objIntoFirstArr = new JSONObject();
+		JSONObject secondObj = new JSONObject();
+		JSONArray jsonarr = new JSONArray();
+		HashMap<Integer, Object> firstarr = new HashMap<Integer, Object>();
+		HashMap<String, Object> finalarr = new HashMap<String, Object>();
+
+		
+		
+		request = given();
+		
+		request.header("Content-Type", "application/json");
+			
+		objIntoFirstArr.put("city", "armagh");
+		objIntoFirstArr.put("id", "0");
+		objIntoFirstArr.put("business", "cleaning");
+		objIntoFirstArr.put("rating", 4);
+		
+		firstarr.put(0, objIntoFirstArr);
+		
+		secondObj.put("dateOfBirth", "09/12/1142");
+		secondObj.put("firstName", "Steven");
+		secondObj.put("gender", "M");
+		secondObj.put("lastName", "King");
+		
+
+		
+		jsonarr.put(firstarr);
+		jsonarr.put(secondObj);
+		
+
+		request.body(jsonarr);
+		response = request.post("http://localhost:8080/v1/person");
+		
+		System.out.println("Get Status Code is: " + response.getStatusCode());
+		
+		
+		
+		
+	}
+
+
+}

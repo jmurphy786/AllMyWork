@@ -1,0 +1,89 @@
+import static io.restassured.RestAssured.given;
+
+import java.util.HashMap;
+
+import org.junit.Test;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
+import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
+import io.restassured.response.Response;
+import io.restassured.response.ValidatableResponse;
+import io.restassured.specification.RequestSpecification;
+
+public class TestURL {
+	private Response response;
+	private ValidatableResponse json;
+	private RequestSpecification request;
+	private String theURL = "http://localhost:8090/example/v1/hotels?page=0&size=100";
+	
+	
+	@Test
+	public void getPerson()
+	{
+		  given()
+			.contentType(ContentType.JSON)
+			.when()
+			.get("http://localhost:8080/v1/persons")
+			.then()
+			.statusCode(200);
+		  System.out.println("A OK");
+		
+	}
+	@SuppressWarnings("unchecked")
+	@Test
+	public void puttingInJSONArray()
+	
+	
+	{
+		RestAssured.baseURI = "http://localhost:8080/v1/person";
+		
+		JSONObject requestParams = new JSONObject();
+		JSONArray jsonfarr = new JSONArray();
+
+		
+		
+		
+		HashMap<String, Object> nestedPetAsMap = new HashMap<String, Object>();
+
+		
+		
+		request = given();
+		
+		request.header("Content-Type", "application/json");
+		request.header("userId", "00000000000");
+			
+		nestedPetAsMap.put("city", "armagh");
+		nestedPetAsMap.put("id", 0);
+		nestedPetAsMap.put("line1", "cleaning");	
+		nestedPetAsMap.put("line2", "cleaning");	
+		nestedPetAsMap.put("state", "Antrim");	
+		nestedPetAsMap.put("zip", "BT23 919");
+		
+		jsonfarr.add(nestedPetAsMap);
+		
+		requestParams.put("addresses", jsonfarr);
+		requestParams.put("dateOfBirth", "2018-09-26T08:28:33.228Z");
+		requestParams.put("firstName", "Steven");
+		requestParams.put("gender", "M");
+		requestParams.put("id", 0);
+		requestParams.put("lastName", "King");
+		requestParams.put("middleName", "King");
+		
+		System.out.println(requestParams.toString());
+
+		request.body(requestParams.toString());
+		response = request.put("/");
+		System.out.println(json = response.then().statusCode(201));
+		System.out.println(response.statusCode());
+
+		
+		
+		
+		
+	}
+
+
+}

@@ -1,0 +1,34 @@
+package com.qa.DemoSite;
+
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Before;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.PageFactory;
+
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
+
+import cucumber.api.PendingException;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+
+public class RunningTests {
+	
+WebDriver driver = null;
+public static ExtentReports reports;
+public static ExtentTest test;
+private String my_username;
+private String my_password;
+
+
+	
+
+
+}

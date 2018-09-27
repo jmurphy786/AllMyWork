@@ -1,0 +1,28 @@
+package com.qa.RestPractice;
+
+import org.junit.Test;
+
+import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
+import io.restassured.response.Response;
+import io.restassured.response.ValidatableResponse;
+import io.restassured.specification.RequestSpecification;
+
+public class TestCase {
+
+	
+	private Response response;
+	private ValidatableResponse json;
+	private RequestSpecification request;
+	
+	@SuppressWarnings("deprecation")
+	@Test
+	public void exampleRestTestWhichSould200() {
+	    RestAssured.given()
+		.content(ContentType.JSON)
+		.when()
+		.get("http://www.omdbapi.com/?t=Spongebob&y=2011&apikey=49a31895")
+		.then().statusCode(200);
+	}
+
+}

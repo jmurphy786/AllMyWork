@@ -1,0 +1,62 @@
+package com.qa.RestPractice;
+
+import org.junit.Test;
+
+import gherkin.deps.com.google.gson.JsonObject;
+import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
+import io.restassured.response.Response;
+import io.restassured.response.ValidatableResponse;
+import io.restassured.specification.RequestSpecification;
+
+
+import static io.restassured.RestAssured.*;
+import static io.restassured.matcher.RestAssuredMatchers.*;
+import static org.hamcrest.Matchers.*;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import static io.restassured.module.jsv.JsonSchemaValidator.*;
+
+public class TestCase {
+
+	
+	private Response response;
+	private ValidatableResponse json;
+	private RequestSpecification request;
+	
+	@SuppressWarnings("deprecation")
+	@Test
+	public void exampleRestTestWhichSould200() {
+        given()
+		.contentType(ContentType.JSON)
+		.when()
+		.get("http://www.omdbapi.com/?t=Spongebob&y=2011&apikey=49a31895")
+		.then().statusCode(200);
+	}
+	
+	
+	@SuppressWarnings("deprecation")
+	@Test
+	public void checkThatTheBodyIsSpongeBob()
+	{
+	     given()
+		.contentType(ContentType.JSON)
+		.when()
+		.get("http://www.omdbapi.com/?t=Spongebob&y=2011&apikey=49a31895")
+		.then().statusCode(200)
+		.body("Title", equalTo("SpongeBob SquarePants: Heroes of Bikini Bottom"));
+	     
+	     
+	    request = given().contentType(ContentType.JSON);
+		response = request.when().get("http://www.omdbapi.com/?t=Spongebob&y=2011&apikey=49a31895");
+		System.out.println(response.getBody().asString());
+	     // Start parsing
+        JSONObject obj = new JSONObject(response.toString());
+        JSONArray results = obj.getJSONArray("results");
+        for (Object o : results) {
+        	System.out.println(o);
+        }
+	}
+}

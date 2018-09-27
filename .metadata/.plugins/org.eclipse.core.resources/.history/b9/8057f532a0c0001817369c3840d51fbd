@@ -1,0 +1,30 @@
+import static io.restassured.RestAssured.given;
+
+import org.junit.Test;
+
+import io.restassured.http.ContentType;
+import io.restassured.response.Response;
+import io.restassured.response.ValidatableResponse;
+import io.restassured.specification.RequestSpecification;
+
+public class TestUrl {
+	
+	
+	private Response response;
+	private ValidatableResponse json;
+	private RequestSpecification request;
+	private String theURL = "http://localhost:8090/example/v1/hotels?page=0&size=100";
+	
+	@Test
+	public void TestURL()
+	{
+		  given()
+			.contentType(ContentType.JSON)
+			.when()
+			.get(theURL)
+			.then()
+			.statusCode(200);
+		
+	}
+
+}

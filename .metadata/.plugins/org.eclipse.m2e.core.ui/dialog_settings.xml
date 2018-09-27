@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="MavenProjectWizardArtifactPage">
+		<list key="groupId">
+			<item value="com.qa"/>
+		</list>
+		<list key="name">
+			<item value="Week8Project"/>
+		</list>
+		<list key="artifactId">
+			<item value="com.qa.Week8Project"/>
+			<item value="SpringBootRestTesting"/>
+			<item value="SwaggerPractice"/>
+			<item value="com.qa.RestPractice"/>
+			<item value="com.qa.MavenProject"/>
+			<item value="com.qa.TeaCompany"/>
+			<item value="com.qa.Reporting"/>
+			<item value="com.qa.ShoppingStuff"/>
+			<item value="PHPTravels"/>
+			<item value="com.qa.DemoQA"/>
+			<item value="com.qa.Shopping"/>
+			<item value="com.qa.DemoSite"/>
+			<item value="BingTesting"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+		<list key="version">
+			<item value="0.0.1-SNAPSHOT"/>
+		</list>
+	</section>
+	<section name="org.eclipse.m2e.core.pom.dependencies">
+	</section>
+	<section name="org.eclipse.m2e.core.pom.overview">
+		<list key="ciManagementUrl">
+		</list>
+		<list key="ciManagementSystem">
+		</list>
+		<list key="issueManagementSystem">
+		</list>
+		<list key="issueManagementUrl">
+		</list>
+	</section>
+	<section name="org.eclipse.m2e.core.ui.internal.dialogs.MavenRepositorySearchDialog">
+		<item value="480" key="width"/>
+		<item value="720" key="x"/>
+		<item value="166" key="y"/>
+		<item value="531" key="height"/>
+	</section>
+	<section name="MavenProjectImportWizardPage">
+		<list key="rootDirectory">
+			<item value="C:\Users\Admin\Documents\Eclipse WorkPlace\spring-boot-rest-example-master"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="MavenProjectWizardArchetypePage">
+		<item value="All Catalogs" key="catalog"/>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="MavenProjectWizardLocationPage">
+		<list key="location">
+			<item value="C:\Users\Admin\Documents\Eclipse WorkPlace\SpringBootRestTesting\src\test\java\TestURL.java"/>
+			<item value="C:\Users\Admin\Documents\Eclipse WorkPlace\com.qa.RestPractice\pom.xml"/>
+			<item value="C:\Users\Admin\Documents\Eclipse WorkPlace\com.qa.DemoSite\src\test\java\com\qa\DemoSite\TestPage.java"/>
+			<item value="C:\Users\Admin\Documents\Eclipse WorkPlace\PHPTravels\src\main\java\MainPage.java"/>
+			<item value="C:\Users\Admin\Documents\Eclipse WorkPlace\com.qa.DemoQA\src\test\java\com\qa\DemoQA\TestSite.java"/>
+			<item value="C:\Users\Admin\Documents\Eclipse WorkPlace\com.qa.Shopping\src\test\java\com\qa\Shopping\TestPage.java"/>
+			<item value="C:\Users\Admin\Documents\Eclipse WorkPlace\com.qa.DemoSite\src\main\java\com\qa\DemoSite\Login.java"/>
+			<item value="C:\Users\Admin\Documents\Eclipse WorkPlace\BingTesting\src\test\java\com\qa\BingTesting\BingPageTest.java"/>
+			<item value="C:\Users\Admin\Documents\Eclipse WorkPlace\com.qa.quickstart\src\test\java\HelloWorld\com\qa\quickstart\AppTest.java"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="Maven2ProjectWizardArchifactPage">
+		<list key="package">
+		</list>
+		<list key="groupId">
+		</list>
+		<list key="artifactId">
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+		<list key="version">
+			<item value="0.0.1-SNAPSHOT"/>
+		</list>
+	</section>
+</section>
